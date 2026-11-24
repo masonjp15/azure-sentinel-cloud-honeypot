@@ -25,7 +25,7 @@ StorageBlobLogs
 ```
 ---
 
-## 📸 Detection & Remediation Evidence
+## Detection & Remediation Evidence
 
 ### 1. Defender XDR Incident Queue (Multi-IP Reconnaissance Log)
 <img width="1512" height="982" alt="Screenshot 2026-11-23 at 7 02 44 PM" src="https://github.com/user-attachments/assets/4cd7db34-da14-41e1-b2de-41569e6744ce" />
@@ -41,6 +41,6 @@ StorageBlobLogs
 
 ---
 
-## 🔐 Key Takeaways & Hardening Controls
+## Key Takeaways & Hardening Controls
 * **Detecting Enumeration Early:** Aggregating `dcount(Uri)` per `CallerIpAddress` reliably separates single-page visitors from automated vulnerability scanners probing `.env`, `/admin`, and backup paths.
 * **Defense-in-Depth for Cloud Storage:** Public blob/static endpoints should never rely on security through obscurity; enforcing **Selected Networks + IPv4 Allowlisting** or **Private Endpoints** eliminates unauthorized internet exposure at the network edge.
