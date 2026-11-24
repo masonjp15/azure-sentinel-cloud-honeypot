@@ -1,0 +1,7 @@
+// Title: Cloud Storage Web Scan Detected
+// MITRE ATT&CK: T1595 (Reconnaissance - Active Scanning)
+// Severity: Medium
+StorageBlobLogs
+| where isnotempty(CallerIpAddress)
+| summarize TotalRequests = count(), DistinctPaths = dcount(Uri), SamplePaths = make_set(Uri, 10) by CallerIpAddress, bin(TimeGenerated, 24h)
+| where DistinctPaths >= 2
