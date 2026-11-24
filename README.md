@@ -26,3 +26,25 @@ StorageBlobLogs
 | where isnotempty(CallerIpAddress)
 | summarize TotalRequests = count(), DistinctPaths = dcount(Uri), SamplePaths = make_set(Uri, 10) by CallerIpAddress, bin(TimeGenerated, 24h)
 | where DistinctPaths >= 2
+
+---
+
+## 📸 Detection & Remediation Evidence
+
+### 1. Defender XDR Incident Queue (Multi-IP Reconnaissance Log)
+<img width="1512" height="982" alt="Screenshot 2026-11-23 at 7 02 44 PM" src="[https://github.com/user-attachments/assets/4cd7db34-da14-41e1-b2de-41569e6744ce](https://github.com/user-attachments/assets/4cd7db34-da14-41e1-b2de-41569e6744ce)" />
+
+### 2. Incident #1 Triage & Alert Details
+<img width="1512" height="982" alt="Screenshot 2026-11-23 at 8 04 34 PM" src="[https://github.com/user-attachments/assets/58d9da28-0b3b-43c7-b550-0a8cab2d9df2](https://github.com/user-attachments/assets/58d9da28-0b3b-43c7-b550-0a8cab2d9df2)" />
+
+### 3. Sentinel Telemetry & Attack Map Workbook
+<img width="1512" height="982" alt="Screenshot 2026-11-23 at 5 29 43 PM" src="[https://github.com/user-attachments/assets/8e921f5e-d086-4aa5-81fe-50abc5bb4e99](https://github.com/user-attachments/assets/8e921f5e-d086-4aa5-81fe-50abc5bb4e99)" />
+
+### 4. Firewall Hardening & `HTTP 403` Verification
+<img width="603" height="1311" alt="IMG_2352" src="[https://github.com/user-attachments/assets/9d5bdbe9-a127-4ed5-abab-77c3f950ab72](https://github.com/user-attachments/assets/9d5bdbe9-a127-4ed5-abab-77c3f950ab72)" />
+
+---
+
+## 🔐 Key Takeaways & Hardening Controls
+* **Detecting Enumeration Early:** Aggregating `dcount(Uri)` per `CallerIpAddress` reliably separates single-page visitors from automated vulnerability scanners probing `.env`, `/admin`, and backup paths.
+* **Defense-in-Depth for Cloud Storage:** Public blob/static endpoints should never rely on security through obscurity; enforcing **Selected Networks + IPv4 Allowlisting** or **Private Endpoints** eliminates unauthorized internet exposure at the network edge.
