@@ -36,7 +36,7 @@ StorageBlobLogs
 ### 3. Sentinel Telemetry & Attack Map Workbook
 <img width="1512" height="982" alt="Screenshot 2026-11-23 at 5 29 43 PM" src="https://github.com/user-attachments/assets/8e921f5e-d086-4aa5-81fe-50abc5bb4e99" />
 
-### 4. Firewall Hardening & `HTTP 404` Verification
+### 4. External Directory Probe Verification (`HTTP 404 WebContentNotFound`)
 <img width="603" height="1311" alt="IMG_2352" src="https://github.com/user-attachments/assets/9d5bdbe9-a127-4ed5-abab-77c3f950ab72" />
 
 ---
