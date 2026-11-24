@@ -1,4 +1,4 @@
-# 📋 Incident Post-Mortem: Cloud Storage Web Enumeration (`Incident #1`)
+# Incident Post-Mortem: Cloud Storage Web Enumeration (`Incident #1`)
 
 | Field | Details |
 | :--- | :--- |
