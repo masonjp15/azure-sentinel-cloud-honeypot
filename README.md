@@ -13,7 +13,7 @@ I built this serverless cloud security lab in **Microsoft Azure** and **Microsof
 3. **Detection Rule:** Scheduled KQL analytics rule mapped to **MITRE ATT&CK T1595 (Active Scanning)** that groups requests by `CallerIpAddress` and triggers a Medium-severity incident in Microsoft Defender XDR when a single IP probes 2 or more distinct URIs.
 4. **Network Containment:** Storage Account networking changed from public access to **Selected networks** with explicit IPv4 allowlisting.
 
-## Detection Rule ```(`detections/cloud-storage-web-scan.kql`)```
+## Detection Rule (`detections/cloud-storage-web-scan.kql`)
 ```kql
 // Title: Cloud Storage Web Scan Detected
 // MITRE ATT&CK: T1595 (Reconnaissance - Active Scanning)
