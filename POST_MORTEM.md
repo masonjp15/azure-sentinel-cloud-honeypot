@@ -7,12 +7,12 @@
 | **MITRE ATT&CK Mapping** | Reconnaissance — Active Scanning (`T1595`) |
 | **Target Asset** | `corpportalassets01` (`https://corpportalassets01.z28.web.core.windows.net/`) |
 | **SIEM / XDR Platform** | Microsoft Sentinel & Microsoft Defender XDR |
-| **Status** | Remediated & Verified (`HTTP 403 AuthorizationFailure`) |
+| **Status** | Remediated & Verified (`HTTP 404 WebContentNotFound`) |
 
 ---
 
 ## 1. Executive Summary
-During active exposure of the decoy Azure Storage Static Website (`corpportalassets01`), automated HTTP directory enumeration attempts were detected probing multiple sensitive URI paths (`/.env`, `/admin`, and related configuration endpoints). The custom scheduled KQL detection rule (`Cloud Storage Web Scan Detected`) aggregated request telemetry from `StorageBlobLogs`, identified multi-path scanning behavior by source IP, and generated actionable Medium-severity incidents in Microsoft Defender XDR. Remediation was completed by restricting Storage Account network access from public internet exposure to explicit IPv4 allowlisting and verifying that unauthorized external requests return `HTTP 403`.
+During active exposure of the decoy Azure Storage Static Website (`corpportalassets01`), automated HTTP directory enumeration attempts were detected probing multiple sensitive URI paths (`/.env`, `/admin`, and related configuration endpoints). The custom scheduled KQL detection rule (`Cloud Storage Web Scan Detected`) aggregated request telemetry from `StorageBlobLogs`, identified multi-path scanning behavior by source IP, and generated actionable Medium-severity incidents in Microsoft Defender XDR. Remediation was completed by restricting Storage Account network access from public internet exposure to explicit IPv4 allowlisting and verifying that unauthorized external requests return HTTP 404 (WebContentNotFound).
 
 ---
 
@@ -27,7 +27,7 @@ During active exposure of the decoy Azure Storage Static Website (`corpportalass
 ## 3. Containment & Remediation Actions
 1. **Network Access Restriction:** Updated `corpportalassets01` **Networking → Firewalls and virtual networks** from *Enabled from all networks* to *Enabled from selected virtual networks and IP addresses*.
 2. **Client Allowlisting:** Added only the authorized administrative workstation IPv4 address to the Storage Account firewall allowlist.
-3. **External Verification:** Tested endpoint reachability from an unauthenticated external cellular connection (Wi-Fi disabled), confirming all requests to `https://corpportalassets01.z28.web.core.windows.net/.env` were blocked at the Azure Storage edge with `HTTP 403 AuthorizationFailure`.
+3. **External Verification:** Tested endpoint reachability from an unauthenticated external cellular connection (Wi-Fi disabled), confirming all requests to `https://corpportalassets01.z28.web.core.windows.net/.env` returned HTTP 404 WebContentNotFound at the Azure Storage edge.
 
 ---
 
