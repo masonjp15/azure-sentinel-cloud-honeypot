@@ -29,6 +29,8 @@ StorageBlobLogs
 
 ---
 
+## 📸 Detection & Remediation Evidence
+
 ### 1. Defender XDR Incident Queue (Multi-IP Reconnaissance Log)
 <img width="1512" height="982" alt="Screenshot 2026-11-23 at 7 02 44 PM" src="https://github.com/user-attachments/assets/4cd7db34-da14-41e1-b2de-41569e6744ce" />
 
@@ -40,6 +42,8 @@ StorageBlobLogs
 
 ### 4. Firewall Hardening & `HTTP 403` Verification
 <img width="603" height="1311" alt="IMG_2352" src="https://github.com/user-attachments/assets/9d5bdbe9-a127-4ed5-abab-77c3f950ab72" />
+
+---
 
 ## 🔐 Key Takeaways & Hardening Controls
 * **Detecting Enumeration Early:** Aggregating `dcount(Uri)` per `CallerIpAddress` reliably separates single-page visitors from automated vulnerability scanners probing `.env`, `/admin`, and backup paths.
