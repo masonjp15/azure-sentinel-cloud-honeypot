@@ -26,7 +26,7 @@ StorageBlobLogs
 | where isnotempty(CallerIpAddress)
 | summarize TotalRequests = count(), DistinctPaths = dcount(Uri), SamplePaths = make_set(Uri, 10) by CallerIpAddress, bin(TimeGenerated, 24h)
 | where DistinctPaths >= 2
-
+```
 ---
 
 ## 📸 Detection & Remediation Evidence
